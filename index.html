@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Jami' Baitusy Syukur - Portal Digital</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">🕌 Baitusy Syukur</div>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#jadwal">Jadwal Sholat</a></li>
+            <li><a href="#fasilitas">Fasilitas</a></li>
+            <li><a href="#donasi">Donasi</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section / Slider Image -->
+<div class="hero-slider">
+    <!-- Tombol Panah Kiri (Glassmorphism) -->
+    <button class="slider-btn prev-btn" id="prevBtn">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <!-- Konten Teks Hero (Glassmorphism Badge & Layout) -->
+    <div class="hero-content">
+        <!-- Badge Kapsul Khas Masjid Raya An-Nur -->
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            MASJID JAMI' BAITUSY SYUKUR — SALATIGA
+        </div>
+
+        <h1>Selamat Datang di<br>Masjid Jami' Baitusy Syukur</h1>
+        <p>Tempat ibadah, keagamaan, dan pelayanan umat di Kota Salatiga.</p>
+
+        <div class="hero-buttons">
+    <!-- Tombol Petunjuk Arah (Pulsing / Hijau Teal) -->
+    <a href="https://maps.app.goo.gl/FBtiAU62R8mLVUts8?g_st=aw" target="_blank" class="btn-pulse">
+        <i class="fa-regular fa-paper-plane"></i> Petunjuk Arah
+    </a>
+
+    <!-- Tombol OpenStreetMap (Glassmorphism Transparan) -->
+    <a href="https://www.openstreetmap.org/export/embed?bbox=110.47513335943223%2C-7.30854346816025%2C110.47764390707019%2C-7.306840797800975&amp;layer=mapnik" target="_blank" class="btn-glass">
+        <i class="fa-solid fa-location-dot"></i> OpenStreetMap <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
+    </a>
+</div>
+
+    </div>
+
+    <!-- Tombol Panah Kanan (Glassmorphism) -->
+    <button class="slider-btn next-btn" id="nextBtn">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <!-- Indicator Dots Slider -->
+    <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+    <div class="container">
+        <!-- Jadwal Sholat Horizontal Interaktif -->
+        <!-- Jadwal Sholat Horizontal Interaktif -->
+            <div class="jadwal-box" id="jadwal">
+                
+                <!-- Header Informasi Lokasi, Tanggal & Countdown -->
+                <div class="jadwal-header">
+                    <!-- Informasi Lokasi & Tanggal (Sesuai Referensi Gambar) -->
+                    <div class="info-lokasi">
+                        <h4>Sidorejo, Kota Salatiga</h4>
+                        <p>Minggu, 18 Oktober 2026 · 7 Jumadilawal 1448 H · WIB</p>
+                    </div>
+
+                    <!-- Box Countdown Rata Kiri & Font Biasa -->
+                    <div class="countdown-wrapper">
+                        <span id="next-prayer-title">Menuju waktu Sholat berikutnya:</span>
+                        <div id="countdown-timer">00j : 00m : 00d</div>
+                    </div>
+                </div>
+
+                <!-- Barisan Kartu Sholat -->
+                <div class="jadwal-row">
+                    <div class="jadwal-card" id="card-subuh">
+                        <div class="prayer-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+                        <span>SUBUH</span>
+                        <strong>04:34</strong>
+                    </div>
+                    <div class="jadwal-card active" id="card-dzuhur">
+                        <div class="prayer-icon"><i class="fa-solid fa-sun"></i></div>
+                        <span>DZUHUR</span>
+                        <strong>11:39</strong>
+                    </div>
+                    <div class="jadwal-card" id="card-ashar">
+                        <div class="prayer-icon"><i class="fa-solid fa-sun-plant-wilt"></i></div>
+                        <span>ASHAR</span>
+                        <strong>14:45</strong>
+                    </div>
+                    <div class="jadwal-card" id="card-maghrib">
+                        <div class="prayer-icon"><i class="fa-solid fa-cloud-moon"></i></div>
+                        <span>MAGHRIB</span>
+                        <strong>17:46</strong>
+                    </div>
+                    <div class="jadwal-card" id="card-isya">
+                        <div class="prayer-icon"><i class="fa-solid fa-moon"></i></div>
+                        <span>ISYA</span>
+                        <strong>18:43</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quote Banner Section (Kutipan Al-Qur'an) -->
+        <section class="quran-quote-section">
+            <div class="quote-overlay">
+                <div class="quote-content">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="quote-text">
+                        "Hanya yang memakmurkan masjid-masjid Allah ialah orang-orang yang beriman kepada Allah dan Hari kemudian, serta tetap mendirikan shalat, menunaikan zakat dan tidak takut (kepada siapapun) selain kepada Allah."
+                    </p>
+                    <span class="quote-source">Surah At-Taubah, 9 : 18</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Peta Lokasi OpenStreetMap -->
+        <div class="section-box">
+            <h3>🗺️ Lokasi Masjid di Peta</h3>
+            <iframe width="100%" height="250" src="https://www.openstreetmap.org/export/embed?bbox=110.47513335943223%2C-7.30854346816025%2C110.47764390707019%2C-7.306840797800975&amp;layer=mapnik" style="border:0; border-radius: 8px;"></iframe>
+        </div>
+            <div class="section-box" id="fasilitas">
+                <h3>🏢 Fasilitas Masjid</h3>
+                <div class="bento-grid">
+                <!-- Fasilitas 1 -->
+                <div class="bento-item">
+                    <img src="foto_fasilitas/Contoh_DalamMasjid.jpg" alt="Ruang Utama">
+                    <div class="bento-overlay">Ruang Sholat Utama Ber-AC & Karpet Nyaman</div>
+                </div>
+
+                <!-- Fasilitas 2 -->
+                <div class="bento-item">
+                    <img src="foto_fasilitas/Contoh_Wudhu.jpg" alt="Tempat Wudhu">
+                    <div class="bento-overlay">Tempat Wudhu & Toilet Bersih</div>
+                </div>
+
+                <!-- Fasilitas 3 -->
+                <div class="bento-item">
+                    <img src="foto_fasilitas/Contoh_Parkiran.jpg" alt="Area Parkir">
+                    <div class="bento-overlay">Area Parkir Luas Motor & Mobil</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donasi Digital -->
+<div class="section-box" id="donasi">
+    <h3>💚 Infaq & Donasi Digital</h3>
+    <p style="font-size: 14px; color: #6b7280; margin-bottom: 20px;">
+        Salurkan infaq terbaik Anda untuk mendukung operasional dan kegiatan jamaah Masjid Jami' Baitusy Syukur.
+    </p>
+
+    <!-- Pilihan Kategori Donasi -->
+    <div class="donasi-row">
+        
+        <!-- Kolom 1: QRIS / Infaq Operasional & Kas Jumat -->
+        <div class="donasi-card">
+            <h4>1. Infaq Kas Jumat & Operasional</h4>
+            <p class="donasi-subtext">Untuk kebersihan, listrik, dan pemeliharaan masjid</p>
+            <div class="qris-placeholder">
+                <img src="foto_fasilitas/qris-masjid.png" alt="QRIS Baitusy Syukur" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <span style="font-size: 12px; color: #0D5466; font-weight: bold; margin-top: 8px; display: block;">
+                Scan via QRIS (Semua E-Wallet / M-Banking)
+            </span>
+        </div>
+
+        <!-- Kolom 2: Rekening Transfer -->
+        <div class="donasi-card text-left">
+            <h4>2. Transfer Rekening Resmi</h4>
+            <p class="bank-info">
+                <strong>Bank Syariah Indonesia (BSI)</strong><br>
+                No. Rekening: <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">7123-4567-89</code><br>
+                a.n. <strong>DKM Masjid Jami' Baitusy Syukur</strong>
+            </p>
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid #e5e7eb;">
+            <p style="font-size: 13px; color: #374151;">
+                <strong>Peruntukan Transfer:</strong><br>
+                • Infaq Rutin / Kas Jumat<br>
+                • Program Santunan Yatim & Dhuafa
+            </p>
+            <p style="font-size: 12px; color: #6b7280; margin-top: 10px;">
+                *Konfirmasi donasi dapat dilakukan ke Sekretariat DKM.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Website Profil Masjid Jami' Baitusy Syukur</p>
+    </footer>
+
+    <!-- Hubungkan ke File JavaScript External -->
+    <script src="script.js"></script>
+</body>
+</html>
