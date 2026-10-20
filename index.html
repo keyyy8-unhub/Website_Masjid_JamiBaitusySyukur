@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Jami' Baitusy Syukur - Portal Digital</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">🕌 Baitusy Syukur</div>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#jadwal">Jadwal Sholat</a></li>
+            <li><a href="#fasilitas">Fasilitas</a></li>
+            <li><a href="#lokasi">Lokasi</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section / Slider Image -->
+    <div class="hero-slider" id="beranda">
+        <!-- Tombol Panah Kiri -->
+        <button class="slider-btn prev-btn" id="prevBtn">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Konten Teks Hero -->
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Blotongan, Kec. Sidorejo - Kota Salatiga.
+            </div>
+
+            <h1>Selamat Datang di<br>Masjid Jami' Baitusy Syukur</h1>
+            <p>Tempat ibadah, keagamaan, dan pelayanan umat di Kota Salatiga.</p>
+
+            <div class="hero-buttons">
+                <a href="https://maps.app.goo.gl/FBtiAU62R8mLVUts8?g_st=aw" target="_blank" class="btn-pulse">
+                    <i class="fa-regular fa-paper-plane"></i> Petunjuk Arah
+                </a>
+                <a href="https://www.openstreetmap.org/export/embed?bbox=110.47513335943223%2C-7.30854346816025%2C110.47764390707019%2C-7.306840797800975&amp;layer=mapnik" target="_blank" class="btn-glass">
+                    <i class="fa-solid fa-location-dot"></i> OpenStreetMap <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tombol Panah Kanan -->
+        <button class="slider-btn next-btn" id="nextBtn">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Indicator Dots Slider -->
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Jadwal Sholat Horizontal (Statis Bersih Tanpa Ikon) -->
+        <div class="jadwal-box" id="jadwal">
+            <div class="jadwal-header">
+                <div class="info-lokasi">
+                    <h4>Sidorejo, Kota Salatiga</h4>
+                    <p>Jadwal Sholat Harian · Kemenag</p>
+                </div>
+            </div>
+
+            <div class="jadwal-row">
+                <div class="jadwal-card">
+                    <span>SUBUH</span>
+                    <strong>04:34</strong>
+                </div>
+                <div class="jadwal-card active">
+                    <span>DZUHUR</span>
+                    <strong>11:39</strong>
+                </div>
+                <div class="jadwal-card">
+                    <span>ASHAR</span>
+                    <strong>14:45</strong>
+                </div>
+                <div class="jadwal-card">
+                    <span>MAGHRIB</span>
+                    <strong>17:46</strong>
+                </div>
+                <div class="jadwal-card">
+                    <span>ISYA</span>
+                    <strong>18:43</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quote Banner Section (Kutipan Al-Qur'an) -->
+        <section class="quran-quote-section">
+            <div class="quote-overlay">
+                <div class="quote-content">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="quote-text">
+                        "Hanya yang memakmurkan masjid-masjid Allah ialah orang-orang yang beriman kepada Allah dan Hari kemudian, serta tetap mendirikan shalat, menunaikan zakat dan tidak takut (kepada siapapun) selain kepada Allah."
+                    </p>
+                    <span class="quote-source">Surah At-Taubah, 9 : 18</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Peta Lokasi OpenStreetMap -->
+        <div class="section-box" id="lokasi">
+            <h3>🗺️ Lokasi Masjid di Peta</h3>
+            <p style="font-size: 14px; color: #6B7280; margin-bottom: 15px;">
+                Jl. Lingkar Salatiga, Blotongan, Kec. Sidorejo, Kota Salatiga, Jawa Tengah
+            </p>
+            <div class="map-wrapper">
+                <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed?bbox=110.47513335943223%2C-7.30854346816025%2C110.47764390707019%2C-7.306840797800975&amp;layer=mapnik" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Section Fasilitas Masjid (Bento Grid Layout) -->
+        <div class="section-box" id="fasilitas">
+            <h3>🏢 Fasilitas Masjid</h3>
+            
+            <div class="bento-grid">
+                <!-- Item Utama (Besar) -->
+                <div class="bento-item main-item">
+                    <img src="foto_fasilitas/Contoh_DalamMasjid.jpg" alt="Ruang Utama Masjid">
+                    <div class="bento-overlay">
+                        <h4>Ruang Sholat Utama</h4>
+                        <p>Nyaman, ber-AC, dengan kapasitas jamaah yang luas.</p>
+                    </div>
+                </div>
+
+                <!-- Item Samping 1 -->
+                <div class="bento-item">
+                    <img src="foto_fasilitas/Contoh_Wudhu.jpg" alt="Tempat Wudhu">
+                    <div class="bento-overlay">
+                        <h4>Tempat Wudhu & Toilet</h4>
+                        <p>Bersih dan terpisah untuk pria & wanita.</p>
+                    </div>
+                </div>
+
+                <!-- Item Samping 2 -->
+                <div class="bento-item">
+                    <img src="foto_fasilitas/Contoh_Parkiran.jpg" alt="Area Parkir">
+                    <div class="bento-overlay">
+                        <h4>Area Parkir Luas</h4>
+                        <p>Aman untuk motor dan mobil jamaah.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Website Profil Masjid Jami' Baitusy Syukur</p>
+    </footer>
+
+    <!-- Hubungkan

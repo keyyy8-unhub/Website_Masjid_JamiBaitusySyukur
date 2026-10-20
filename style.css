@@ -1,7 +1,7 @@
 /* CSS Reset & Variable Warna */
 :root {
     --primary-teal: #0D5466;   /* Warna Utama (Navbar, Header) */
-    --accent-gold: #BC832A;    /* Warna Aksen/Highlight (Kartu Aktif, Tombol) */
+    --accent-gold: #BC832A;    /* Warna Aksen/Highlight */
     --bg-cream: #FFFCED;       /* Warna Latar Belakang Website */
     --text-dark: #1F2937;
 }
@@ -18,7 +18,6 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Judul-judul menggunakan Font Serif agar Elegan */
 h1, h2, h3, .logo {
     font-family: 'Playfair Display', serif;
 }
@@ -40,7 +39,6 @@ nav {
 nav .logo {
     font-weight: 700;
     font-size: 20px;
-    letter-spacing: 0.5px;
 }
 
 nav ul {
@@ -75,7 +73,6 @@ nav ul li a:hover {
     color: white;
 }
 
-/* Overlay Gelap Ciamik */
 .hero-slider::before {
     content: '';
     position: absolute;
@@ -84,7 +81,6 @@ nav ul li a:hover {
     z-index: 1;
 }
 
-/* Konten Teks di Atas Overlay */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -93,14 +89,12 @@ nav ul li a:hover {
     margin-left: 20px;
 }
 
-/* Badge Kapsul Glassmorphism (Khas Referensi Gambar) */
 .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 6px 16px;
     border-radius: 30px;
@@ -130,7 +124,6 @@ nav ul li a:hover {
     font-size: 16px;
     margin-bottom: 24px;
     opacity: 0.9;
-    max-width: 550px;
 }
 
 .hero-buttons {
@@ -139,7 +132,6 @@ nav ul li a:hover {
     align-items: center;
 }
 
-/* Tombol Transparan Glassmorphism */
 .btn-glass {
     display: inline-flex;
     align-items: center;
@@ -160,7 +152,6 @@ nav ul li a:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* Tombol Panah Kanan Kiri Glassmorphism (Khas Referensi Gambar 2) */
 .slider-btn {
     position: relative;
     z-index: 2;
@@ -169,7 +160,6 @@ nav ul li a:hover {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
     font-size: 18px;
@@ -185,7 +175,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Dots Indicator */
 .slider-dots {
     position: absolute;
     bottom: 20px;
@@ -211,7 +200,6 @@ nav ul li a:hover {
     background: var(--accent-gold);
 }
 
-/* Pulsing Button dengan Warna Emas (Accent Gold) */
 .btn-pulse {
     display: inline-block;
     background-color: var(--accent-gold);
@@ -222,22 +210,14 @@ nav ul li a:hover {
     font-size: 14px;
     border-radius: 30px;
     box-shadow: 0 4px 15px rgba(188, 131, 42, 0.4);
-    animation: pulse-animation 2s infinite;
     transition: background-color 0.3s;
-}
-
-@keyframes pulse-animation {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(188, 131, 42, 0.6); }
-    70% { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(188, 131, 42, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(188, 131, 42, 0); }
 }
 
 .btn-pulse:hover {
     background-color: #a06e22;
-    animation: none;
 }
 
-/* Container */
+/* Container & Sections */
 .container {
     max-width: 1000px;
     margin: -40px auto 40px auto;
@@ -246,7 +226,6 @@ nav ul li a:hover {
     z-index: 10;
 }
 
-/* Section Box General */
 .section-box, .jadwal-box {
     background: white;
     padding: 29px;
@@ -262,10 +241,7 @@ nav ul li a:hover {
     color: var(--primary-teal);
 }
 
-.jadwal-box {
-    text-align: left;
-}
-
+/* Jadwal Sholat Statis */
 .jadwal-row {
     display: flex;
     justify-content: space-between;
@@ -275,191 +251,98 @@ nav ul li a:hover {
 .jadwal-card {
     flex: 1;
     background-color: #F9FAFB;
-    padding: 16px 10px;
+    padding: 18px 10px;
     border-radius: 12px;
+    text-align: center;
     border: 1px solid #E5E7EB;
-    transition: transform 0.2s;
 }
 
-/* Kartu Salat Aktif (Warna Emas Mewah) */
 .jadwal-card.active {
     background: linear-gradient(135deg, var(--accent-gold), #d49533);
     color: white;
     border: none;
     box-shadow: 0 6px 18px rgba(188, 131, 42, 0.35);
-    transform: translateY(-2px);
 }
 
 .jadwal-card span {
     font-size: 12px;
     display: block;
     margin-bottom: 6px;
-    letter-spacing: 0.5px;
+    font-weight: 600;
 }
 
 .jadwal-card strong {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
 }
 
-/* Tampilan Hitung Mundur (Countdown Box) */
-.countdown-wrapper {
-    background-color: var(--bg-cream);
-    padding: 12px 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    display: inline-block;
-    border: 1px solid rgba(188, 131, 42, 0.3);
-}
-
-#next-prayer-title {
-    font-size: 13px;
-    color: var(--primary-teal);
-    font-weight: 500;
-    display: block;
-    margin-bottom: 4px;
-}
-
-#countdown-timer {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent-gold);
-    letter-spacing: 1px;
-}
-
-/* Styling Ikon Sholat */
-.prayer-icon {
-    font-size: 22px;
-    margin-bottom: 8px;
-    color: var(--primary-teal);
-    transition: color 0.3s;
-}
-
-.jadwal-card.active .prayer-icon {
-    color: white; /* Ikon jadi putih saat kartu aktif */
-}
-
-.jadwal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 20px;
-    gap: 15px;
-    flex-wrap: wrap; /* Agar responsif saat di layar HP */
-}
-
-/* Quran Quote Banner Section */
+/* Quote Banner */
 .quran-quote-section {
     position: relative;
-    /* Ganti 'images/quran-bg.jpg' jika kamu memakai file gambar tersendiri */
     background: url('https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed;
     margin: 50px 0;
-    border-radius: 0px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(13, 84, 102, 0.15);
 }
 
 .quote-overlay {
     background: linear-gradient(135deg, rgba(13, 84, 102, 0.85), rgba(0, 0, 0, 0.75));
-    padding: 70px 30px;
+    padding: 60px 30px;
     text-align: center;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.quote-content {
-    max-width: 800px;
 }
 
 .quote-icon {
     font-size: 32px;
     color: var(--accent-gold);
-    margin-bottom: 20px;
-    opacity: 0.8;
+    margin-bottom: 15px;
 }
 
 .quote-text {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.6;
     font-style: italic;
-    font-weight: 600;
     color: var(--bg-cream);
-    margin-bottom: 18px;
-    letter-spacing: 0.3px;
+    margin-bottom: 15px;
 }
 
 .quote-source {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--accent-gold);
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-/* Informasi Lokasi & Tanggal di Pojok Atas */
-.info-lokasi h4 {
-    font-family: 'Plus Jakarta Sans', sans-serif; /* Font biasa/bersih */
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-}
-
-.info-lokasi p {
-    font-size: 13px;
-    color: #6B7280;
-    font-weight: 500;
-}
-
-/* Countdown Rata Kiri & Font Biasa */
-.countdown-wrapper {
-    background-color: var(--bg-cream);
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: 1px solid rgba(188, 131, 42, 0.3);
-    text-align: left; /* Countdown rata kiri */
-}
-
-#next-prayer-title {
-    font-size: 12px;
-    color: var(--primary-teal);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 2px;
-}
-
-#countdown-timer {
-    font-family: 'Plus Jakarta Sans', sans-serif; /* Menggunakan Font Sans biasa */
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent-gold);
-    letter-spacing: 0.5px;
-}
-
-/* Bento Grid Fasilitas */
+/* Bento Grid Layout Fasilitas */
 .bento-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 16px;
+    grid-template-rows: repeat(2, 160px);
+    gap: 15px;
 }
 
 .bento-item {
-    background: #E5E7EB;
-    border-radius: 12px;
-    overflow: hidden;
     position: relative;
-    height: 200px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(13, 84, 102, 0.1);
+}
+
+.bento-item.main-item {
+    grid-row: span 2;
 }
 
 .bento-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.bento-item:hover img {
+    transform: scale(1.05);
 }
 
 .bento-overlay {
@@ -467,64 +350,50 @@ nav ul li a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(13, 84, 102, 0.9));
-    color: white;
     padding: 16px;
-    font-size: 14px;
-    font-weight: 600;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    color: white;
 }
 
-/* Donasi Section */
-.donasi-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.bento-overlay h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 4px;
 }
 
-.donasi-card {
-    background: #F9FAFB;
-    padding: 22px;
+.bento-overlay p {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+/* Peta */
+.map-wrapper {
+    width: 100%;
     border-radius: 12px;
+    overflow: hidden;
     border: 1px solid #E5E7EB;
-    text-align: center;
-}
-
-.donasi-card.text-left {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.donasi-subtext {
-    font-size: 13px;
-    color: #6B7280;
-    margin: 10px 0;
-}
-
-.qris-placeholder {
-    background: #E5E7EB;
-    height: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    font-weight: bold;
-    color: var(--primary-teal);
-    border: 2px dashed #D1D5DB;
-}
-
-.bank-info {
-    font-size: 14px;
-    margin-top: 10px;
-    line-height: 1.6;
 }
 
 footer {
     text-align: center;
-    padding: 24px;
+    padding: 20px;
     color: var(--primary-teal);
     font-size: 13px;
-    font-weight: 500;
 }
 
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .bento-item.main-item {
+        grid-row: span 1;
+        height: 200px;
+    }
+    .bento-item {
+        height: 160px;
+    }
+    .jadwal-row {
+        grid-template-columns: 1fr;
+    }
+}
