@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Jami' Baitusy Syukur - Portal Digital</title>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Lengkap */
+        :root {
+            --primary-teal: #0D5466; --accent-gold: #BC832A;
+            --bg-cream: #FFFCED; --text-dark: #1F2937;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-cream); color: var(--text-dark); font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+
+        nav { background: var(--primary-teal); color: white; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        nav .logo { font-weight: 700; font-size: 20px; }
+        nav ul { display: flex; list-style: none; gap: 24px; }
+        nav a { color: white; text-decoration: none; font-weight: 500; font-size: 14px; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-gold); }
+
+        .hero-slider { position: relative; height: 520px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; background-color: #000; color: white; background-size: cover; background-position: center; transition: background-image 0.6s ease; }
+        .hero-slider::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,84,102,0.6), rgba(0,0,0,0.7)); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 700px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 30px; font-size: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 16px; }
+        .badge-dot { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; }
+        .hero-content h1 { font-size: 38px; margin-bottom: 12px; }
+        .hero-content p { font-size: 16px; margin-bottom: 24px; opacity: 0.9; }
+
+        .btn-pulse { background: var(--accent-gold); color: white; padding: 12px 28px; text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 14px; display: inline-block; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(188,131,42,0.6); transform: scale(1); } 50% { box-shadow: 0 0 0 10px rgba(188,131,42,0); transform: scale(1.03); } }
+
+        .slider-btn { position: relative; z-index: 2; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); color: white; cursor: pointer; transition: 0.3s; }
+        .slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; gap: 8px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); }
+        .dot.active { width: 28px; border-radius: 10px; background: var(--accent-gold); }
+
+        .container { max-width: 1000px; margin: -40px auto 40px; padding: 0 20px; position: relative; z-index: 10; }
+        .section-box, .jadwal-box { background: white; padding: 29px; border-radius: 16px; box-shadow: 0 4px 20px rgba(13,84,102,0.06); margin-bottom: 30px; }
+        .section-box h3 { color: var(--primary-teal); margin-bottom: 18px; }
+
+        .jadwal-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; }
+        .countdown-wrapper { background: var(--bg-cream); padding: 10px 16px; border-radius: 10px; border: 1px solid rgba(188,131,42,0.3); }
+        #next-prayer-title { font-size: 12px; color: var(--primary-teal); font-weight: 600; display: block; margin-bottom: 2px; }
+        #countdown-timer { font-size: 18px; font-weight: 700; color: var(--accent-gold); }
+
+        .jadwal-row, .donasi-row { display: flex; gap: 12px; }
+        .jadwal-card { flex: 1; background: #F9FAFB; padding: 16px 10px; border-radius: 12px; border: 1px solid #E5E7EB; text-align: center; }
+        .jadwal-card.active { background: linear-gradient(135deg, var(--accent-gold), #d49533); color: white; box-shadow: 0 6px 18px rgba(188,131,42,0.3); }
+        .prayer-icon { font-size: 22px; color: var(--primary-teal); margin-bottom: 8px; }
+        .jadwal-card.active .prayer-icon { color: white; }
+        .jadwal-card span { font-size: 12px; display: block; margin-bottom: 6px; }
+        .jadwal-card strong { font-size: 18px; }
+
+        .quran-quote-section { background: url('https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=1600') center/cover fixed; margin: 50px 0; border-radius: 12px; overflow: hidden; }
+        .quote-overlay { background: linear-gradient(135deg, rgba(13,84,102,0.85), rgba(0,0,0,0.75)); padding: 70px 30px; text-align: center; color: white; }
+        .quote-text { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; margin-bottom: 18px; }
+
+        .lokasi-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .map-frame { width: 100%; height: 250px; border: 0; border-radius: 12px; }
+        
+        /* Modifikasi Card Kiblat */
+        .kiblat-card { background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+        .compass-wrapper { position: relative; width: 80px; height: 80px; margin-bottom: 15px; }
+        .compass-icon { font-size: 70px; color: #D1D5DB; }
+        
+        /* Jarum Kiblat dinamis dengan transisi halus */
+        .qibla-arrow { position: absolute; font-size: 40px; color: var(--accent-gold); top: 15px; left: 24px; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2)); transition: transform 1.5s ease-out; transform-origin: center; }
+        
+        .kiblat-card h2 { color: var(--primary-teal); margin: 5px 0; font-size: 28px;}
+        .kiblat-card p { font-size: 12px; color: #6B7280; line-height: 1.4; }
+        .btn-lokasi { margin-top: 12px; padding: 6px 12px; font-size: 11px; background: var(--primary-teal); color: white; border: none; border-radius: 6px; cursor: pointer; }
+
+        .bento-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+        .bento-item { position: relative; height: 200px; border-radius: 12px; overflow: hidden; background: #E5E7EB; }
+        .bento-item img { width: 100%; height: 100%; object-fit: cover; }
+        .bento-overlay { position: absolute; bottom: 0; inset-inline: 0; background: linear-gradient(transparent, rgba(13,84,102,0.9)); color: white; padding: 16px; font-size: 14px; }
+
+        .donasi-card { background: #F9FAFB; padding: 22px; border-radius: 12px; border: 1px solid #E5E7EB; flex: 1; text-align: center; }
+        .donasi-card.text-left { text-align: left; }
+        .qris-placeholder { height: 130px; margin: 10px 0; }
+        footer { text-align: center; padding: 24px; color: var(--primary-teal); font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🕌 Baitusy Syukur</div>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#jadwal">Jadwal Sholat</a></li>
+            <li><a href="#lokasi">Lokasi & Kiblat</a></li>
+            <li><a href="#fasilitas">Fasilitas</a></li>
+            <li><a href="#donasi">Donasi</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-slider" id="beranda">
+        <button class="slider-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="hero-content">
+            <div class="hero-badge"><span class="badge-dot"></span> MASJID JAMI' BAITUSY SYUKUR</div>
+            <h1>Selamat Datang di<br>Masjid Jami' Baitusy Syukur</h1>
+            <p>Tempat ibadah, keagamaan, dan pelayanan umat berbasis digital.</p>
+            <div class="hero-buttons">
+                <a href="#lokasi" class="btn-pulse"><i class="fa-solid fa-compass"></i> Cek Kiblat Sekarang</a>
+            </div>
+        </div>
+        <button class="slider-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="slider-dots">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Jadwal Sholat -->
+        <div class="jadwal-box" id="jadwal">
+            <div class="jadwal-header">
+                <div class="info-lokasi">
+                    <h4 id="lokasi-teks">Mendeteksi Lokasi...</h4>
+                    <p id="tanggal-sekarang">Memuat tanggal...</p>
+                </div>
+                <div class="countdown-wrapper">
+                    <span id="next-prayer-title">Menuju waktu Sholat:</span>
+                    <div id="countdown-timer">00j : 00m : 00d</div>
+                </div>
+            </div>
+            <div class="jadwal-row" id="prayer-cards-container"></div>
+        </div>
+
+        <section class="quran-quote-section">
+            <div class="quote-overlay">
+                <div class="quote-content">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="quote-text">"Hanya yang memakmurkan masjid-masjid Allah ialah orang-orang yang beriman kepada Allah dan Hari kemudian..."</p>
+                    <span class="quote-source">Surah At-Taubah, 9 : 18</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lokasi & Arah Kiblat Global -->
+        <div class="section-box" id="lokasi">
+            <h3>🗺️ Lokasi & Arah Kiblat (Global)</h3>
+            <div class="lokasi-grid">
+                <iframe id="map-iframe" src="https://www.openstreetmap.org/export/embed?bbox=110.475,-7.308,110.477,-7.306&amp;layer=mapnik" class="map-frame"></iframe>
+                
+                <div class="kiblat-card">
+                    <div class="compass-wrapper">
+                        <!-- Compass Background -->
+                        <i class="fa-regular fa-compass compass-icon"></i> 
+                        <!-- Jarum Kiblat (Akan berputar otomatis via JS) -->
+                        <i class="fa-solid fa-location-arrow qibla-arrow" id="dynamic-arrow" style="transform: rotate(0deg);"></i>
+                    </div>
+                    <h4>Arah Kiblat</h4>
+                    <h2 id="qibla-degree">--°</h2>
+                    <p id="qibla-desc">Klik tombol di bawah untuk mendeteksi arah kiblat dari lokasi Anda.</p>
+                    <button class="btn-lokasi" onclick="getLocationAndQibla()"><i class="fa-solid fa-location-crosshairs"></i> Deteksi Lokasi</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fasilitas -->
+        <div class="section-box" id="fasilitas">
+            <h3>🏢 Fasilitas Masjid</h3>
+            <div class="bento-grid">
+                <div class="bento-item"><img src="https://images.unsplash.com/photo-1590059518381-8b01a1f0a2ba?auto=format&fit=crop&w=800&q=80" alt="Ruang Utama"><div class="bento-overlay">Ruang Sholat Utama Ber-AC</div></div>
+                <div class="bento-item"><img src="https://images.unsplash.com/photo-1623910271011-85e6db9fb381?auto=format&fit=crop&w=500&q=60" alt="Tempat Wudhu"><div class="bento-overlay">Tempat Wudhu & Toilet Bersih</div></div>
+                <div class="bento-item"><img src="https://images.unsplash.com/photo-1590435451296-613d2de854f3?auto=format&fit=crop&w=500&q=60" alt="Area Parkir"><div class="bento-overlay">Area Parkir Luas</div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer><p>© 2026 Website Profil Masjid Jami' Baitusy Syukur</p></footer>
+
+    <!-- LOGIKA JAVASCRIPT UTAMA -->
+    <script>
+        // --- 1. RUMUS MENGHITUNG KIBLAT GLOBAL (GREAT CIRCLE) ---
+        // Koordinat Ka'bah, Makkah
+        const KAABA_LAT = 21.422487;
+        const KAABA_LON = 39.826206;
+
+        function calculateQibla(userLat, userLon) {
+            // Konversi Derajat ke Radian
+            const toRad = (deg) => (deg * Math.PI) / 180;
+            const toDeg = (rad) => (rad * 180) / Math.PI;
+
+            const phiK = toRad(KAABA_LAT);
+            const lambdaK = toRad(KAABA_LON);
+            const phi = toRad(userLat);
+            const lambda = toRad(userLon);
+
+            // Rumus Navigasi Great Circle
+            const y = Math.sin(lambdaK - lambda);
+            const x = Math.cos(phi) * Math.tan(phiK) - Math.sin(phi) * Math.cos(lambdaK - lambda);
+
+            let qibla = toDeg(Math.atan2(y, x));
+            
+            // Normalisasi agar sudut selalu berada di rentang 0 - 360 derajat
+            return (qibla + 360) % 360; 
+        }
+
+        // --- 2. DETEKSI LOKASI PENGGUNA (GEOLOCATION API) ---
+        function getLocationAndQibla() {
+            const degreeText = document.getElementById("qibla-degree");
+            const descText = document.getElementById("qibla-desc");
+            const arrow = document.getElementById("dynamic-arrow");
+            const mapIframe = document.getElementById("map-iframe");
+            const lokasiTeks = document.getElementById("lokasi-teks");
+
+            if ("geolocation" in navigator) {
+                degreeText.textContent = "...";
+                descText.textContent = "Mengambil data GPS...";
+
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        
+                        // Menghitung Kiblat berdasarkan GPS User
+                        const qiblaAngle = calculateQibla(lat, lon);
+                        
+                        // Update UI Kiblat
+                        degreeText.textContent = `${qiblaAngle.toFixed(1)}°`;
+                        descText.innerHTML = `Dari Utara Sejati<br>(Lat: ${lat.toFixed(2)}, Lon: ${lon.toFixed(2)})`;
+                        
+                        // Memutar Jarum (-45deg untuk kompensasi icon default FontAwesome yang miring)
+                        // Icon fa-location-arrow aslinya menghadap serong, jadi kita perlu menyesuaikannya.
+                        arrow.style.transform = `rotate(${qiblaAngle - 45}deg)`;
+
+                        // Update Peta OpenStreetMap mengikuti koordinat user (kotak bounding / bbox sederhana)
+                        const offset = 0.005;
+                        mapIframe.src = `https://www.openstreetmap.org/export/embed?bbox=${lon - offset},${lat - offset},${lon + offset},${lat + offset}&layer=mapnik&marker=${lat},${lon}`;
+                        
+                        lokasiTeks.textContent = "Lokasi Berhasil Dideteksi";
+                    },
+                    (error) => {
+                        // Jika akses ditolak, kembalikan ke default Salatiga
+                        degreeText.textContent = "294.6°";
+                        descText.textContent = "Akses GPS ditolak. Menampilkan kiblat default (Salatiga).";
+                        arrow.style.transform = `rotate(${294.6 - 45}deg)`;
+                        lokasiTeks.textContent = "Sidorejo, Kota Salatiga (Default)";
+                    }
+                );
+            } else {
+                descText.textContent = "Browser tidak mendukung Geolocation.";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Jalankan deteksi lokasi otomatis saat web dibuka
+            getLocationAndQibla();
+
+            // Slider Setup
+            const heroImages = [
+                'https://images.unsplash.com/photo-1564769651615-06f4ee60c73e?q=80&w=1600&auto=format&fit=crop', 
+                'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=1600&auto=format&fit=crop', 
+                'https://images.unsplash.com/photo-1519817914152-2a64115119fb?q=80&w=1600&auto=format&fit=crop'
+            ];
+            const slider = document.querySelector('.hero-slider');
+            const dots = document.querySelectorAll('.dot');
+            let currentSlide = 0;
+
+            const updateSlider = (idx) => {
+                if(!slider) return;
+                slider.style.backgroundImage = `url('${heroImages[idx]}')`;
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+            };
+
+            document.getElementById('nextBtn')?.addEventListener('click', () => updateSlider(currentSlide = (currentSlide + 1) % heroImages.length));
+            document.getElementById('prevBtn')?.addEventListener('click', () => updateSlider(currentSlide = (currentSlide - 1 + heroImages.length) % heroImages.length));
+            updateSlider(0);
+
+            // Setup Waktu Sholat dummy
+            const prayerTimes = [
+                { name: "Subuh", time: "04:34", icon: "fa-cloud-sun" },
+                { name: "Dzuhur", time: "11:39", icon: "fa-sun" },
+                { name: "Ashar", time: "14:45", icon: "fa-sun-plant-wilt" },
+                { name: "Maghrib", time: "17:46", icon: "fa-cloud-moon" },
+                { name: "Isya", time: "18:43", icon: "fa-moon" }
+            ];
+
+            const container = document.getElementById('prayer-cards-container');
+            container.innerHTML = prayerTimes.map((p, i) => `
+                <div class="jadwal-card" id="card-${i}">
+                    <div class="prayer-icon"><i class="fa-solid ${p.icon}"></i></div>
+                    <span>${p.name.toUpperCase()}</span>
+                    <strong>${p.time}</strong>
+                </div>
+            `).join('');
+
+            // Format Tanggal
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('tanggal-sekarang').textContent = new Date().toLocaleDateString('id-ID', options);
+        });
+    </script>
+</body>
+</html>
