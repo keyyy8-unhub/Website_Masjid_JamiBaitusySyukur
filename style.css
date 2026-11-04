@@ -1,27 +1,28 @@
-:root { /* vasiabel untuk pallate warna agar konsisten, dan cukup 1 tempat */
-    --primary-teal: #0D5466;
-    --accent-gold: #BC832A;
-    --bg-cream: #FFFCED;
+/* CSS Reset & Variable Warna */
+:root {
+    --primary-teal: #0D5466;   /* Warna Utama (Navbar, Header) */
+    --accent-gold: #BC832A;    /* Warna Aksen/Highlight */
+    --bg-cream: #FFFCED;       /* Warna Latar Belakang Website */
     --text-dark: #1F2937;
 }
 
-* { /* Mengatur jarak defalut dari browser*/
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* menghitung ukuran elemen yang sesuai */
+    box-sizing: border-box;
 }
 
-body { /* mengatur elemen berwarna cream dan font untuk penggunaan pada isi konten */
+body {
     background-color: var(--bg-cream);
-    color: var(--text-dark); 
+    color: var(--text-dark);
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-h1, h2, h3, .logo { /* mengatur font untuk judul */
+h1, h2, h3, .logo {
     font-family: 'Playfair Display', serif;
 }
 
-/* Bagian Navigasi bar */
+/* Navbar */
 nav {
     background-color: var(--primary-teal);
     color: white;
@@ -35,7 +36,6 @@ nav {
     box-shadow: 0 4px 12px rgba(13, 84, 102, 0.15);
 }
 
-/* merapikan elemen pada menu navigasi bar */
 nav .logo {
     font-weight: 700;
     font-size: 20px;
@@ -60,7 +60,7 @@ nav ul li a:hover {
 }
 
 /* Hero Slider Container */
-.hero-slider { /* wadah untuk foto di banner utama */
+.hero-slider {
     position: relative;
     height: 520px;
     display: flex;
@@ -73,7 +73,7 @@ nav ul li a:hover {
     color: white;
 }
 
-.hero-slider::before { /* overlay gelap pada foto */
+.hero-slider::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -81,7 +81,7 @@ nav ul li a:hover {
     z-index: 1;
 }
 
-.hero-content { /* teks sapaan selamat datang */
+.hero-content {
     position: relative;
     z-index: 2;
     max-width: 700px;
@@ -100,9 +100,9 @@ nav ul li a:hover {
     border-radius: 30px;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     color: var(--bg-cream);
-    margin-bottom: 20px; /* Jarak ke tombol-tombol di bawahnya */
+    margin-bottom: 16px;
 }
 
 .badge-dot {
@@ -112,7 +112,6 @@ nav ul li a:hover {
     border-radius: 50%;
 }
 
-/* Format judul dan subteks deskripsi */
 .hero-content h1 {
     font-size: 38px;
     line-height: 1.2;
@@ -123,11 +122,10 @@ nav ul li a:hover {
 
 .hero-content p {
     font-size: 16px;
-    margin-bottom: 12px; 
+    margin-bottom: 24px;
     opacity: 0.9;
 }
 
-/* styling tombol peta dan arah petunjuk */
 .hero-buttons {
     display: flex;
     gap: 15px;
@@ -154,7 +152,6 @@ nav ul li a:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* Styling tombol slider kanan kiri (tanda panah) */
 .slider-btn {
     position: relative;
     z-index: 2;
@@ -220,7 +217,7 @@ nav ul li a:hover {
     background-color: #a06e22;
 }
 
-/* Container dan Sections Jadwal */
+/* Container & Sections */
 .container {
     max-width: 1000px;
     margin: -40px auto 40px auto;
@@ -244,7 +241,7 @@ nav ul li a:hover {
     color: var(--primary-teal);
 }
 
-/* Jadwal Sholat */
+/* Jadwal Sholat Statis */
 .jadwal-row {
     display: flex;
     justify-content: space-between;
@@ -278,8 +275,6 @@ nav ul li a:hover {
     font-size: 20px;
     font-weight: 700;
 }
-
-/* Kutipan */
 
 .quran-quote-section {
     position: relative;
@@ -321,7 +316,7 @@ nav ul li a:hover {
     text-transform: uppercase;
 }
 
-/* tata letak Fasilitas */
+/* Bento Grid Layout Fasilitas */
 .bento-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -372,7 +367,7 @@ nav ul li a:hover {
     opacity: 0.85;
 }
 
-/* Teks copywrite di bawah halaman */
+/* Peta */
 .map-wrapper {
     width: 100%;
     border-radius: 12px;
@@ -387,7 +382,7 @@ footer {
     font-size: 13px;
 }
 
-@media (max-width: 768px) { /* Aturan responsif agar tampilan otomatis rapi saat dibuka di HP/layar kecil. */
+@media (max-width: 768px) {
     .bento-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
