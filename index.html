@@ -73,26 +73,32 @@
                     <h4>Sidorejo, Kota Salatiga</h4>
                     <p>Jadwal Sholat Harian · Kemenag</p>
                 </div>
+                <!-- Tambahkan pembungkus countdown ini agar JS bisa menampilkan angkanya -->
+                <div class="countdown-wrapper" style="text-align: right;">
+                    <span id="next-prayer-title" style="font-size: 13px; color: var(--primary-teal); font-weight: 600;">Menuju waktu Sholat:</span>
+                    <div id="countdown-timer" style="font-size: 20px; font-weight: 700; color: var(--accent-gold);">00j : 00m : 00d</div>
+                </div>
             </div>
 
             <div class="jadwal-row">
-                <div class="jadwal-card">
+                <!-- Tambahkan id="card-..." pada setiap elemen jadwal -->
+                <div class="jadwal-card" id="card-subuh">
                     <span>SUBUH</span>
                     <strong>04:34</strong>
                 </div>
-                <div class="jadwal-card active">
+                <div class="jadwal-card" id="card-dzuhur">
                     <span>DZUHUR</span>
                     <strong>11:39</strong>
                 </div>
-                <div class="jadwal-card">
+                <div class="jadwal-card" id="card-ashar">
                     <span>ASHAR</span>
                     <strong>14:45</strong>
                 </div>
-                <div class="jadwal-card">
+                <div class="jadwal-card" id="card-maghrib">
                     <span>MAGHRIB</span>
                     <strong>17:46</strong>
                 </div>
-                <div class="jadwal-card">
+                <div class="jadwal-card" id="card-isya">
                     <span>ISYA</span>
                     <strong>18:43</strong>
                 </div>
@@ -366,6 +372,7 @@
                     </div>
                 </div>
 
+
                 <div class="bento-item">
                     <img src="foto_fasilitas/Contoh_Wudhu.jpg" alt="Tempat Wudhu">
                     <div class="bento-overlay">
@@ -373,6 +380,7 @@
                         <p>Bersih dan terpisah untuk pria & wanita.</p>
                     </div>
                 </div>
+
 
                 <div class="bento-item">
                     <img src="foto_fasilitas/Contoh_Parkiran.jpg" alt="Area Parkir">
@@ -386,7 +394,7 @@
     </div>
 
     <footer>
-        <p>© 2026 Website Profil Masjid Jami' Baitusy Syukur</p> <!-- Teks copyright di paling bawah halaman -->
+        <p>© 2026 Website Profil Masjid Jami' Baitusy Syukur</p>
     </footer>
 
     <script src="script.js"></script>
