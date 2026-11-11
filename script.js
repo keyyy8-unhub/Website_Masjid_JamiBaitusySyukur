@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Website Masjid Jami' Baitusy Syukur
  * Fitur: Kompas Penunjuk Arah Kiblat Digital & Hero Slider
@@ -14,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
        2. KOMPAS PENUNJUK ARAH KIBLAT DIGITAL
        ============================================================ */
     initQiblaCompass();
+    initPrayerCountdown();
 });
 
 /* ================================================================
@@ -51,45 +51,12 @@ function initHeroSlider() {
         // Update indikator titik (dots)
         dots.forEach((dot, idx) => {
             if (idx === currentSlide) {
-=======
-// Menunggu seluruh elemen dokumen HTML selesai dimuat
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("Website Portal Masjid Jami' Baitusy Syukur Siap!");
-
-    // Contoh interaksi sederhana: Memberikan pesan selamat datang di konsol browser
-    const masjidName = "Masjid Jami' Baitusy Syukur";
-    console.log("Selamat Datang di Portal Resmi " + masjidName);
-});
-
-// Logika Slider Background Hero
-const heroImages = [
-    'Contoh_masjid.jpg', // Foto 1 (Ganti nama filemu)
-    'foto_fasilitas/Contoh_DalamMasjid.jpg', // Foto 2
-    'foto_fasilitas/Contoh_Parkiran.jpg' // Foto 3
-];
-
-let currentSlide = 0;
-const heroSlider = document.querySelector('.hero-slider');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const dots = document.querySelectorAll('.dot');
-
-function updateSlider(index) {
-    if (heroSlider) {
-        heroSlider.style.backgroundImage = `linear-gradient(180deg, rgba(13, 84, 102, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url('${heroImages[index]}')`;
-        
-        // Update titik indicator
-        dots.forEach((dot, i) => {
-            if (i === index) {
->>>>>>> f79c93af3390b18f1f206f5423f65d475f75a06e
                 dot.classList.add('active');
             } else {
                 dot.classList.remove('active');
             }
         });
     }
-<<<<<<< HEAD
-
     function startAutoSlide() {
         stopAutoSlide();
         slideTimer = setInterval(() => {
@@ -217,10 +184,10 @@ function initQiblaCompass() {
        ------------------------------------------------------------ */
     function getDirectionName(deg) {
         const directions = [
-            'Utara', 'Utara Timur Laut', 'Timur Laut', 'Timur Menenggara',
-            'Timur', 'Tenggara Menimur', 'Tenggara', 'Selatan Menenggara',
-            'Selatan', 'Selatan Menbarat', 'Barat Daya', 'Barat Membarat Daya',
-            'Barat', 'Barat Menghadap Laut', 'Barat Laut', 'Utara Barat Laut'
+            'Utara', 'Utara-Timur Laut', 'Timur Laut', 'Timur-Timur Laut',
+            'Timur', 'Timur-Tenggara', 'Tenggara', 'Selatan-Tenggara',
+            'Selatan', 'Selatan-Barat Daya', 'Barat Daya', 'Barat-Barat Daya',
+            'Barat', 'Barat-Barat Laut', 'Barat Laut', 'Utara-Barat Laut'
         ];
         const index = Math.round(deg / 22.5) % 16;
         return directions[index];
@@ -472,99 +439,52 @@ function initQiblaCompass() {
     // Inisialisasi awal nilai kiblat
     updateQiblaMetrics();
 }
-=======
-}
 
-if (nextBtn && prevBtn) {
-    nextBtn.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % heroImages.length;
-        updateSlider(currentSlide);
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + heroImages.length) % heroImages.length;
-        updateSlider(currentSlide);
-    });
-}
-
-// Set tampilan awal
-updateSlider(0);
-
-document.addEventListener("DOMContentLoaded", function () {
-    // 1. Data Waktu Sholat (Format 24 jam)
+function initPrayerCountdown() {
     const prayerTimes = [
-        { name: "Subuh", time: "04:34", id: "card-subuh" },
-        { name: "Dzuhur", time: "11:39", id: "card-dzuhur" },
-        { name: "Ashar", time: "14:45", id: "card-ashar" },
-        { name: "Maghrib", time: "17:46", id: "card-maghrib" },
-        { name: "Isya", time: "18:43", id: "card-isya" }
+        { name: 'Subuh', time: '04:34', id: 'card-subuh' },
+        { name: 'Dzuhur', time: '11:39', id: 'card-dzuhur' },
+        { name: 'Ashar', time: '14:45', id: 'card-ashar' },
+        { name: 'Maghrib', time: '17:46', id: 'card-maghrib' },
+        { name: 'Isya', time: '18:43', id: 'card-isya' }
     ];
+    const titleEl = document.getElementById('next-prayer-title');
+    const timerEl = document.getElementById('countdown-timer');
+
+    if (!titleEl || !timerEl) return;
 
     function updateCountdown() {
         const now = new Date();
-        const currentHours = now.getHours();
-        const currentMinutes = now.getMinutes();
-        const currentSeconds = now.getSeconds();
+        const currentSeconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+        let nextPrayer = prayerTimes.find(({ time }) => {
+            const [hours, minutes] = time.split(':').map(Number);
+            return hours * 3600 + minutes * 60 > currentSeconds;
+        });
+        let secondsUntilPrayer;
 
-        const currentTimeInSeconds = (currentHours * 3600) + (currentMinutes * 60) + currentSeconds;
-
-        let nextPrayer = null;
-        let targetTimeInSeconds = 0;
-
-        // Cari waktu sholat berikutnya
-        for (let prayer of prayerTimes) {
-            const [pHours, pMinutes] = prayer.time.split(":").map(Number);
-            const pSeconds = (pHours * 3600) + (pMinutes * 60);
-
-            if (pSeconds > currentTimeInSeconds) {
-                nextPrayer = prayer;
-                targetTimeInSeconds = pSeconds;
-                break;
-            }
-        }
-
-        // Jika semua waktu sholat hari ini sudah lewat, target berikutnya adalah Subuh besok
-        if (!nextPrayer) {
+        if (nextPrayer) {
+            const [hours, minutes] = nextPrayer.time.split(':').map(Number);
+            secondsUntilPrayer = hours * 3600 + minutes * 60 - currentSeconds;
+        } else {
             nextPrayer = prayerTimes[0];
-            const [pHours, pMinutes] = nextPrayer.time.split(":").map(Number);
-            targetTimeInSeconds = (pHours * 3600) + (pMinutes * 60) + (24 * 3600); // tambah 24 jam
+            const [hours, minutes] = nextPrayer.time.split(':').map(Number);
+            secondsUntilPrayer = 24 * 3600 + hours * 3600 + minutes * 60 - currentSeconds;
         }
 
-        // Hitung selisih detik
-        let diffInSeconds = targetTimeInSeconds - currentTimeInSeconds;
+        const hours = Math.floor(secondsUntilPrayer / 3600);
+        const minutes = Math.floor((secondsUntilPrayer % 3600) / 60);
+        const seconds = secondsUntilPrayer % 60;
+        const formatTwoDigits = value => String(value).padStart(2, '0');
 
-        const hours = Math.floor(diffInSeconds / 3600);
-        diffInSeconds %= 3600;
-        const minutes = Math.floor(diffInSeconds / 60);
-        const seconds = diffInSeconds % 60;
+        titleEl.textContent = `Menuju waktu ${nextPrayer.name}:`;
+        timerEl.textContent = `${formatTwoDigits(hours)}j : ${formatTwoDigits(minutes)}m : ${formatTwoDigits(seconds)}d`;
 
-        // Format angka agar selalu 2 digit (misal: 05 jam)
-        const formatTwoDigits = (num) => String(num).padStart(2, '0');
-
-        // Tampilkan ke HTML
-        const titleEl = document.getElementById("next-prayer-title");
-        const timerEl = document.getElementById("countdown-timer");
-
-        if (titleEl && timerEl) {
-            titleEl.textContent = `Menuju waktu ${nextPrayer.name}:`;
-            timerEl.textContent = `${formatTwoDigits(hours)}j : ${formatTwoDigits(minutes)}m : ${formatTwoDigits(seconds)}d`;
-        }
-
-        // Highlight kartu waktu sholat secara otomatis
-        prayerTimes.forEach(p => {
-            const card = document.getElementById(p.id);
-            if (card) {
-                if (p.name === nextPrayer.name) {
-                    card.classList.add("active");
-                } else {
-                    card.classList.remove("active");
-                }
-            }
+        prayerTimes.forEach(prayer => {
+            const card = document.getElementById(prayer.id);
+            if (card) card.classList.toggle('active', prayer.id === nextPrayer.id);
         });
     }
 
-    // Jalankan countdown setiap 1 detik
     updateCountdown();
-    setInterval(updateCountdown, 1000);
-});
->>>>>>> f79c93af3390b18f1f206f5423f65d475f75a06e
+    window.setInterval(updateCountdown, 1000);
+}
